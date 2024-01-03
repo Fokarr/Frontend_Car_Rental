@@ -59,7 +59,7 @@
       </div>
 
       <!-- cta button -->
-      <CtaButton></CtaButton>
+      <CtaButton :route="'/car/' + car.id"></CtaButton>
     </div>
   </div>
 </template>
@@ -85,7 +85,7 @@ function toggleLike() {
     carsStore.unlikeCar(props.car);
   } else {
     carsStore.likeCar(props.car);
-
   }
 }
+
 </script>
