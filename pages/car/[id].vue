@@ -9,6 +9,7 @@
           :darkBlueBG="true"
           heading="Sports car with the best design and acceleration"
           subheading="Safety and comfort while driving a futuristic and elegant sports car"
+          :detailPage="true"
           class="sm:max-w-full"
         ></HeaderCard>
 
@@ -20,6 +21,7 @@
               :darkBlueBG="true"
               heading=""
               subheading=""
+              :detailPage="true"
               class=""
             ></HeaderCard>
           </div>

@@ -21,6 +21,7 @@
     <img
       :src="carImageUrl"
       class="mx-auto lg:absolute lg:bottom-0 lg:left-0 lg:right-0"
+      :class="{ 'w-3/5': !detailPage }"
       alt=""
     />
   </div>
@@ -49,6 +50,10 @@ const props = defineProps({
   subheading: {
     type: String,
     default: "Ease of doing a car rental safely and reliably. Of course at a low price.",
+  },
+  detailPage: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>
