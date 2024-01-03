@@ -83,10 +83,9 @@ const props = defineProps({
 function toggleLike() {
   if (carsStore.isCarLiked(props.car)) {
     carsStore.unlikeCar(props.car);
-    console.log("unlike");
   } else {
     carsStore.likeCar(props.car);
-    console.log("like");
+
   }
 }
 </script>

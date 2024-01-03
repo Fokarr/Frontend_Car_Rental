@@ -37,7 +37,12 @@
         <div>
           <div class="flex justify-between">
             <div class="text-2xl font-black">{{ car.name }}</div>
-            <Icon name="mdi:heart" class="w-8 h-8"></Icon>
+            <Icon
+              name="mdi:heart"
+              class="w-8 h-8"
+              :class="carsStore.isCarLiked(car) ? 'text-red-500' : 'text-secondary-300'"
+              @click="toggleLike"
+            ></Icon>
           </div>
           <div class="flex items-center text-primary-500 mb-4 mt-2">
             <Icon name="mdi:star"></Icon>
@@ -111,8 +116,19 @@
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
+import { useCarsStore } from "@/stores/cars";
+const carsStore = useCarsStore();
+
 const route = useRoute();
 const car = ref(null);
+
+function toggleLike() {
+  if (carsStore.isCarLiked(car.value)) {
+    carsStore.unlikeCar(car.value);
+  } else {
+    carsStore.likeCar(car.value);
+  }
+}
 
 car.value = {
   name: "Volkswagen Golf",
