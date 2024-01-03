@@ -5,6 +5,8 @@
     <HeaderCard></HeaderCard>
 
     <CarCard></CarCard>
+
+    <Footer></Footer>
   </div>
 </template>
 
