@@ -1,7 +1,14 @@
 <template>
   <div>
-    <HeaderCard></HeaderCard>
-
+    <div class="flex gap-x-8">
+      <HeaderCard class="w-full md:1/2"></HeaderCard>
+      <HeaderCard
+        :darkBlueBG="true"
+        heading="Sports car with the best design and acceleration"
+        subheading="Safety and comfort while driving a futuristic and elegant sports car"
+        class="w-1/2 hidden md:block"
+      ></HeaderCard>
+    </div>
     <div v-if="isLoading">
       <p>Loading...</p>
     </div>
