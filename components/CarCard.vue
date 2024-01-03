@@ -1,12 +1,12 @@
 <template>
-  <div class="bg-primary-0 rounded-lg shadow-md p-4 flex flex-col gap-8 sm:max-w-sm">
+  <div class="bg-primary-0 rounded-lg h-full shadow-md p-4 flex flex-col gap-8 sm:max-w-sm">
     <!-- top part of card -->
     <div>
       <div class="flex justify-between items-center">
         <div class="font-bold text-xl">{{ car.name }}</div>
         <Icon
           name="mdi:heart"
-          class="w-8 h-8"
+          class="w-8 h-8 transition-all duration-300 ease-in-out hover:text-red-500 hover:cursor-pointer hover:scale-110"
           :class="carsStore.isCarLiked(car) ? 'text-red-500' : 'text-secondary-300'"
           @click="toggleLike"
         ></Icon>
@@ -15,8 +15,8 @@
       <div class="text-secondary-300 text-lg font-medium">{{ car.type }}</div>
     </div>
     <div :class="{ flex: wideCard }">
-      <div class="relative w-4/5 mx-auto mb-8" :class="{ 'pr-12': wideCard }">
-        <img :src="car.img" alt="" class="" />
+      <div class="relative w-4/5 mx-auto mb-8" :class="{ 'pr-10': wideCard }">
+        <img :src="car.img" alt="" class="w-50" />
         <div
           class="absolute bottom-0 h-1/2 inset-x-0 bg-gradient-to-t from-white to-transparent"
         ></div>

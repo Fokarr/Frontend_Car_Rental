@@ -27,7 +27,7 @@
           </div>
 
           <div v-for="image in car?.images" :key="image.id" class="flex-1">
-            <img :src="image.url" class="rounded-lg h-full object-cover" alt="" />
+            <img :src="image.url" class="rounded-lg  h-full object-cover" alt="" />
           </div>
         </div>
       </div>

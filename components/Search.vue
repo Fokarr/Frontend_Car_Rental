@@ -1,6 +1,8 @@
 <template>
   <div class="basis-9/12 relative">
     <input
+      @input="updateSearchValue"
+      v-model="searchValue"
       type="text"
       class="rounded-full text-secondary-400 w-full border border-gray-200 text-sm px-4 py-3 pl-10 transition-all ease-in-out duration-300 focus:outline-primary-500"
       placeholder="Search something here..."
@@ -23,4 +25,23 @@
   </div>
 </template>
 
-<script setup></script>
+<script>
+import { ref } from 'vue';
+import { useSearchStore } from '~/stores/search';
+
+export default {
+  setup() {
+    const searchValue = ref("");
+    const searchStore = useSearchStore();
+
+    function updateSearchValue() {
+      searchStore.updateSearchValue(searchValue.value);
+    }
+
+    return {
+      searchValue,
+      updateSearchValue,
+    };
+  },
+};
+</script>

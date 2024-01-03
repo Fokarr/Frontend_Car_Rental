@@ -16,8 +16,14 @@
       <p>Error fetching data.</p>
     </div>
     <div v-else>
-      <CarCategory heading="Popular Cars">
-        <div v-for="car in cars.data" :key="car.id">
+      <CarCategory heading="Popular Cars" :showViewAll="true">
+        <div v-for="car in filteredPopularCars" :key="car.id">
+          <CarCard :car="car"></CarCard>
+        </div>
+      </CarCategory>
+
+      <CarCategory heading="Recommendation Cars">
+        <div v-for="car in filteredCars" :key="car.id">
           <CarCard :car="car"></CarCard>
         </div>
       </CarCategory>
@@ -27,10 +33,39 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { computed } from 'vue';
+import { useSearchStore } from '~/stores/search';
 
 const isLoading = ref(false);
+const filteredPopularCars = ref([]);
+const filteredCars = ref([]);
+const searchStore = useSearchStore();
+
+
+onMounted(() => {
+  searchStore.updateSearchValue("");
+})
 
 const { data: cars, pending, error, refresh } = await useAsyncData(() =>
   $fetch("/api/cars")
 );
+
+const { data: popularCars } = await useAsyncData(() =>
+  $fetch("/api/carspopular")
+);
+
+
+// Use a computed property to get the current search value
+const currentSearchValue = computed(() => searchStore.searchValue);
+
+watch(() => {
+  const searchTerm = currentSearchValue.value.toLowerCase();
+  filteredPopularCars.value = popularCars.value.filter(car => car.name.toLowerCase().includes(searchTerm));
+  filteredCars.value = cars.value.data.filter(car => car.name.toLowerCase().includes(searchTerm));
+
+  //console.log(popularCars)
+  // Call your custom function here
+  //yourCustomFunction(currentSearchValue.value);
+});
+
 </script>
