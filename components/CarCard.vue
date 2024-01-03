@@ -1,19 +1,17 @@
 <template>
-  <div
-    class="bg-primary-0 rounded-lg shadow-md p-4 flex flex-col gap-8  sm:max-w-sm"
-  >
+  <div class="bg-primary-0 rounded-lg shadow-md p-4 flex flex-col gap-8 sm:max-w-sm">
     <!-- top part of card -->
     <div>
       <div class="flex justify-between items-center">
-        <div class="font-bold text-xl">Koeningsegg</div>
+        <div class="font-bold text-xl">{{ car.name }}</div>
         <Icon name="mdi:heart" class="w-8 h-8 text-red-500"></Icon>
       </div>
 
-      <div class="text-secondary-300 text-lg font-medium">Sport</div>
+      <div class="text-secondary-300 text-lg font-medium">{{ car.type }}</div>
     </div>
     <div :class="{ flex: wideCard }">
       <div class="relative w-4/5 mx-auto mb-8" :class="{ 'pr-12': wideCard }">
-        <img src="/placeholder.png" alt="" class="" />
+        <img :src="car.img" alt="" class="" />
         <div
           class="absolute bottom-0 h-1/2 inset-x-0 bg-gradient-to-t from-white to-transparent"
         ></div>
@@ -29,17 +27,17 @@
         <!-- tank capacity -->
         <div class="flex items-center gap-x-1">
           <Icon name="mdi:gas-station" class="w-5 h-5" />
-          <div>90L</div>
+          <div>{{ car.gasolineLiter }}</div>
         </div>
         <!-- driving type -->
         <div class="flex items-center gap-x-1">
           <Icon name="mdi:steering" class="w-5 h-5"></Icon>
-          <div>Manual</div>
+          <div>{{ car.kindOfTransition }}</div>
         </div>
         <!-- seat number -->
         <div class="flex items-center gap-x-1">
           <Icon name="mdi:account-multiple" class="w-5 h-5"></Icon>
-          <div>4 People</div>
+          <div>{{ car.people }} People</div>
         </div>
       </div>
     </div>
@@ -47,8 +45,12 @@
     <div class="flex justify-between items-end">
       <!-- car price -->
       <div class="font-bold text-xl">
-        <div>$99.00/ <span class="text-secondary-300 text-base">day</span></div>
-        <div class="line-through text-secondary-300 text-base mt-1 hidden">$120.00</div>
+        <div>
+          {{ car.pricePerDay }} / <span class="text-secondary-300 text-base">day</span>
+        </div>
+        <div class="line-through text-secondary-300 text-base mt-1 hidden">
+          {{ car.pricePerDay }}
+        </div>
       </div>
 
       <!-- cta button -->
@@ -65,7 +67,9 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  car: {
+    type: Object,
+    required: true,
+  },
 });
 </script>
-
-<style scoped></style>
