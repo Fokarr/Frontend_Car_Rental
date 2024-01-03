@@ -4,7 +4,12 @@
     <div>
       <div class="flex justify-between items-center">
         <div class="font-bold text-xl">{{ car.name }}</div>
-        <Icon name="mdi:heart" class="w-8 h-8 text-red-500"></Icon>
+        <Icon
+          name="mdi:heart"
+          class="w-8 h-8"
+          :class="carsStore.isCarLiked(car) ? 'text-red-500' : 'text-secondary-300'"
+          @click="toggleLike"
+        ></Icon>
       </div>
 
       <div class="text-secondary-300 text-lg font-medium">{{ car.type }}</div>
@@ -27,7 +32,7 @@
         <!-- tank capacity -->
         <div class="flex items-center gap-x-1">
           <Icon name="mdi:gas-station" class="w-5 h-5" />
-          <div>{{ car.gasolineLiter }}</div>
+          <div>{{ car.gasolineLiter }}L</div>
         </div>
         <!-- driving type -->
         <div class="flex items-center gap-x-1">
@@ -46,10 +51,10 @@
       <!-- car price -->
       <div class="font-bold text-xl">
         <div>
-          {{ car.pricePerDay }} / <span class="text-secondary-300 text-base">day</span>
+          ${{ car.pricePerDay }} / <span class="text-secondary-300 text-base">day</span>
         </div>
         <div class="line-through text-secondary-300 text-base mt-1 hidden">
-          {{ car.pricePerDay }}
+          ${{ car.pricePerDay }}
         </div>
       </div>
 
@@ -61,6 +66,8 @@
 
 <script setup>
 import { defineProps } from "vue";
+import { useCarsStore } from "@/stores/cars";
+const carsStore = useCarsStore();
 
 const props = defineProps({
   wideCard: {
@@ -72,4 +79,14 @@ const props = defineProps({
     required: true,
   },
 });
+
+function toggleLike() {
+  if (carsStore.isCarLiked(props.car)) {
+    carsStore.unlikeCar(props.car);
+    console.log("unlike");
+  } else {
+    carsStore.likeCar(props.car);
+    console.log("like");
+  }
+}
 </script>
