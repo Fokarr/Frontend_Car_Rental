@@ -18,4 +18,5 @@ export const useCarsStore = defineStore({
       return this.likedCars.some((c) => c.id === car.id);
     },
   },
+  persist: true,
 });
