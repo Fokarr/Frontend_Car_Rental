@@ -9,7 +9,10 @@
       Ease of doing a car rental safely and reliably. Of course at a low price.
     </div>
     <div class="my-4 lg:mb-28">
-      <button class="bg-primary-500 rounded-md p-4 px-8 text-primary-0 font-base">
+      <button
+        v-if="showCta"
+        class="bg-primary-500 rounded-md p-4 px-8 text-primary-0 font-base"
+      >
         Rental Now
       </button>
     </div>
@@ -21,6 +24,15 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+  showCta: {
+    type: Boolean,
+    default: true,
+  },
+});
+</script>
 
 <style lang="scss" scoped></style>
