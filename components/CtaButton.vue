@@ -1,8 +1,12 @@
 <template>
   <div>
-    <NuxtLink :to="route" class="bg-primary-500 rounded-md p-3 px-6 text-primary-0 font-base">
+    <a
+      :href="route"
+      class="bg-primary-500 rounded-md p-3 px-6 text-primary-0 font-base"
+      no-prefetch
+    >
       Rental Now
-    </NuxtLink>
+    </a>
   </div>
 </template>
 

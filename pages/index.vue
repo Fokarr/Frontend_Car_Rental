@@ -30,10 +30,7 @@ import { ref, onMounted } from "vue";
 
 const isLoading = ref(false);
 
-const { data: cars, pending, error, refresh } = await useAsyncData(
-  'cars',
-  () => $fetch('/api/cars')
-)
-
-
+const { data: cars, pending, error, refresh } = await useAsyncData(() =>
+  $fetch("/api/cars")
+);
 </script>

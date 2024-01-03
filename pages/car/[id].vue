@@ -12,7 +12,6 @@
           :detailPage="true"
           class="sm:max-w-full"
         ></HeaderCard>
-        
 
         <div class="flex w-full mt-4 gap-x-4 max-w md:max-w-sm lg:max-w-2xl">
           <div class="flex-1">
@@ -101,7 +100,6 @@
             </div>
           </div>
 
-          
           <!-- cta button -->
           <CtaButton></CtaButton>
         </div>
@@ -124,10 +122,11 @@ import { useCarsStore } from "@/stores/cars";
 
 const route = useRoute();
 
-const { data: car, pending } = await useAsyncData("cars", () => $fetch(`/api/cars/${route.params.id}`));
+const { data: car, pending } = await useAsyncData(() =>
+  $fetch(`/api/cars/${route.params.id}`)
+);
 
 const carsStore = useCarsStore();
-
 
 function toggleLike() {
   if (carsStore.isCarLiked(car.value)) {
@@ -136,7 +135,6 @@ function toggleLike() {
     carsStore.likeCar(car.value);
   }
 }
-
 </script>
 
 <style lang="scss" scoped></style>
