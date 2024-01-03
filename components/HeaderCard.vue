@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-information-500 rounded-lg shadow-md p-4 m-4 relative flex flex-col gap-4 max-w sm:max-w-sm lg:max-w-2xl lg:p-8"
+    class="bg-information-500 rounded-lg shadow-md p-4 relative flex flex-col gap-4 max-w sm:max-w-sm lg:max-w-2xl lg:p-8"
   >
     <h3 class="text-white font-semibold lg:text-2xl lg:w-1/2">
       The Best Platform for Car Rental

@@ -1,10 +1,9 @@
 <template>
   <div class="wrapper bg-gray-100">
     <Navbar />
-
-    <HeaderCard></HeaderCard>
-
-    <CarCard></CarCard>
+    <div class="sm:px-8 px-4 my-8">
+      <NuxtPage />
+    </div>
 
     <Footer></Footer>
   </div>

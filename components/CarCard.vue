@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-primary-0 rounded-lg shadow-md p-4 m-4 flex flex-col gap-8 max-w sm:max-w-sm"
+    class="bg-primary-0 rounded-lg shadow-md p-4 flex flex-col gap-8 max-w sm:max-w-sm"
   >
     <!-- top part of card -->
     <div>
@@ -49,8 +49,6 @@
   </div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style scoped></style>
