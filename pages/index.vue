@@ -1,11 +1,18 @@
 <template>
   <div>
     <div class="flex gap-x-8">
-      <HeaderCard class="w-full md:1/2"></HeaderCard>
+      <HeaderCard 
+        class="w-full md:1/2"
+        heading="The Best Platform for Car Rental"
+        subheading="Ease of doing a car rental safely and reliably. Of course at a low price."
+        backgroundImageUrl="/BG_Rounded.svg"
+        >
+      </HeaderCard>
       <HeaderCard
         :darkBlueBG="true"
         heading="Sports car with the best design and acceleration"
         subheading="Safety and comfort while driving a futuristic and elegant sports car"
+        backgroundImageUrl="/BG_Rectangle.svg"
         class="w-1/2 hidden md:block"
       ></HeaderCard>
     </div>

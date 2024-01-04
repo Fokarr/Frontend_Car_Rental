@@ -5,7 +5,8 @@
       <div class="">
         <HeaderCard
           :showCta="false"
-          :carImageUrl="car?.img"
+          :carImageUrl="currentSelectedImage"
+          backgroundImageUrl="/BG_Rectangle.svg"
           :darkBlueBG="true"
           heading="Sports car with the best design and acceleration"
           subheading="Safety and comfort while driving a futuristic and elegant sports car"
@@ -17,17 +18,19 @@
           <div class="flex-1">
             <HeaderCard
               :showCta="false"
-              :carImageUrl="car?.img"
+              :carImageUrl="car.img"
               :darkBlueBG="true"
               heading=""
               subheading=""
+              backgroundImageUrl="/BG_Rectangle.svg"
               :detailPage="true"
               class=""
+              @click="selectImage(undefined)"
             ></HeaderCard>
           </div>
 
-          <div v-for="image in car?.images" :key="image.id" class="flex-1">
-            <img :src="image.url" class="rounded-lg  h-full object-cover" alt="" />
+          <div v-for="image in car.images" :key="car.id" class="flex-1">
+            <img @click="selectImage(image.url)" :src="image.url" class="transition-all ease-in-out hover:shadow-lg duration-300 hover:cursor-pointer hover:-translate-y-1 rounded-lg  h-full object-cover" alt="" />
           </div>
         </div>
       </div>
@@ -127,6 +130,20 @@ const { data: car, pending } = await useAsyncData(() =>
 );
 
 const carsStore = useCarsStore();
+
+const currentSelectedImage = ref();
+
+currentSelectedImage.value = car.value.img
+
+function selectImage(image) {
+  if(image) {
+    currentSelectedImage.value = image;
+  } else {
+    currentSelectedImage.value = car.value.img;
+  }
+  
+  console.log(currentSelectedImage.value)
+}
 
 function toggleLike() {
   if (carsStore.isCarLiked(car.value)) {
